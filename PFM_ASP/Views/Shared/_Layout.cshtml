@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial scale=1" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+
+    <title></title>
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <div class="container">
+            <div class="row">
+
+                <!-- Bars icon -->
+                <i class="icon fa fa-bars fa-2x"></i>
+                <!-- Logo -->
+                <div class="col-md-1 col-xs-12">
+                    <div class="logo">
+                        <img src="~/images/Logo6.png" style="width:150px; height:57px;">
+
+                    </div>
+                </div>
+
+                <!-- Nav -->
+                <nav class="col-md-5 col-xs-12">
+                    <ul id="naav" class="nav-list">
+                        <li class="list"><a href="~/Home"><i class="glyphicon glyphicon-home"></i> HOME</a></li>
+                        <li class="list"><a href="~/ListBooks/Index"><i class="glyphicon glyphicon-book"></i> BOOKS</a></li>
+                        <li class="dropdown list">
+                            @if (User.IsInRole("Admins"))
+                            {
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                    <i class="glyphicon glyphicon-book"></i> Manage
+                                    <span class="glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                                <div class="dropdown-menu" style="background-color:gray;width:100px;text-align:center;">
+                                    <a style="width:158px;height:40px;" href="~/Roles">Roles</a>
+                                    <a style="width:158px;height:40px;" href="~/Categories">Categories</a>
+                                    <a style="width:158px;height:40px;" href="~/Books">Books</a>
+                                </div>
+                            }
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-md-2 col-xs-12">
+
+                </nav>
+                <nav class="col-md-4 col-xs-12">
+                    @Html.Partial("_Login")
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- /Header -->
+
+    <div>
+        <div class="row" style="margin-bottom:60px;">
+
+            @RenderBody()
+
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="navbar navbar-fixed-bottom footer">
+        <div class="col-md-6 footer-content">
+            &copy; 2020 <span>TDI201 EDDARAI - SABIR</span> .All rights reserved.
+        </div>
+        <div class="col-md-6 footer-logo">
+            <a href="https://www.facebook.com/abdelkhalek.book.3"><img src="~/images/footer/footer1.png"></a>
+            <a href="https://www.instagram.com/book_biblio/"><img src="~/images/footer/footer3.png"></a>
+            <a href="https://twitter.com/book_biblio"><img src="~/images/footer/footer4.png"></a>
+        </div>
+    </div>
+    <!-- /footer -->
+    <script src="~/Script/jquery-3.4.1.min.js"></script>
+    <script src="~/Script/bootstrap.js"></script>
+    <script src="~/Script/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="~/Script/countdown.js"></script>
+    <script type="text/javascript">
+        $('#clock').countdown('2021/04/23', function (event) {
+            var $this = $(this).html(event.strftime(
+
+                '<div><span>%D</span><span>Days</span></div>'
+                + '<div><span>%H</span><span>Hours</span></div>'
+                + '<div><span>%M</span><span>Minutes</span></div>'
+                + '<div><span>%S</span><span>Seconds</span></div>'
+            ))
+        })
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

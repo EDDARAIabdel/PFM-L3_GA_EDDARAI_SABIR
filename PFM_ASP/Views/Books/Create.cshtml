@@ -1,0 +1,124 @@
+﻿@model PFM_ASP.Models.Book
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    body {
+        background-image: url('../../images/background.jpg');
+        background-size: cover;
+        background-repeat: repeat-y;
+        min-height: 800px;
+    }
+
+    .dv {
+        margin-top: 140px;
+        margin-bottom: 80px;
+        background-color: white;
+    }
+</style>
+<div class="container dv">
+    <h2>Ajout d'un livre</h2>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    @using (Html.BeginForm("Create", "Books", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <div class="alert alert-danger" id="errordiv" style="display:none;">
+                <span id="viewerror">
+
+                </span>
+            </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.BookTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BookTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BookTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BookDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.BookDescription, new { htmlAttributes = new { @class = "form-control", @id= "BookDescription" } })
+                    @Html.ValidationMessageFor(model => model.BookDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BookImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="upload" id="bookimage" />
+                    @Html.ValidationMessageFor(model => model.BookImage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BookUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BookUrl, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BookUrl, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Créer" class="btn btn-default" id="save" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <button class="btn btn-info">@Html.ActionLink("Retour a la liste", "Index")</button>
+    </div>
+    <br />
+</div>
+<script>
+    CKEDITOR.replace("BookDescription");
+</script>
+@section scripts{
+<script>
+    $(function () {
+        $("#save").click(function () {
+            //empty
+            if ($("#bookimage").val() == "") {
+                $("#errordiv").fadeIn();
+                $("#viewerror").append("Please select a picture for the book");
+                return false;
+            }
+
+            if ($("#bookimage").val() != "") {
+                //extension
+                var filename = document.getElementById("bookimage").value;
+                var extensionImg = filename.substr(filename.lastIndexOf('.') + 1);
+                var validExtensions = ['jpg', 'png', 'gif', 'bmp'];
+                if ($.inArray(extensionImg, validExtensions) == -1) {
+                    $("#errordiv").fadeIn();
+                    $("#viewerror").append("Please select a valid picture for the book");
+                    return false;
+                }
+                //size
+                var myfilesize = document.getElementById("bookimage").files[0].size / 1024 / 1024;
+                if (myfilesize > 2) {
+                    $("#errordiv").fadeIn();
+                    $("#viewerror").append("Size max of the picture has deppassed !!");
+                    return false;
+                }
+            }
+        });
+    });
+    
+</script>
+}

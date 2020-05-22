@@ -1,0 +1,74 @@
+﻿@model PFM_ASP.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    body {
+        background-image: url('../../images/background.jpg');
+        background-size: cover;
+        background-repeat: repeat-y;
+        min-height: 800px;
+    }
+
+    .dv {
+        margin-top: 140px;
+        margin-bottom: 80px;
+        background-color: white;
+    }
+</style>
+<div class="container dv">
+    <h2>Détails du livre</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.category.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.category.CategoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookDescription)
+            </dt>
+
+            <dd>
+                @Html.Raw(HttpUtility.HtmlDecode(@Html.DisplayFor(model => model.BookDescription).ToString()))
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookImage)
+            </dt>
+
+            <dd>
+                <img src="~/Uploads/@Html.DisplayFor(model => model.BookImage)" 
+                     class="thumbnail" style="width:48px;height:48px;" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BookUrl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookUrl)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <button class="btn btn-info">@Html.ActionLink("Modifier", "Edit", new { id = Model.Id })</button>|
+        <button class="btn btn-info">@Html.ActionLink("Retour a la liste", "Index")</button>
+    </p>
+    <br />
+</div>

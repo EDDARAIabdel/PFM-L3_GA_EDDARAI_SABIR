@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Home -->
+<section class="sections home text-center" style="height:597px;">
+    <div class="overlay">
+        <div class="container">
+            <div class="home-content" style="margin-top:-67px;">
+                <h5 class="home-logo"><span class="AE">STORE BOOK</span></h5>
+                <h1 class="home-title">A WIDE WORLD OF BOOKS</h1>
+                <p class="lead home-desc">
+                    discover more than 8000 books which concert all subjects and written by different languages
+                </p>
+                <hr>
+                <h2 class="home-title">Next World Book Day</h2>
+                <div id="clock" class="count">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Home -->
+<!-- About -->
+<a id="about"></a>
+<section class="sections about">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="section-title">About Us</h2>
+            <div class="line"><span></span></div>
+            <p>
+                You can't judge a book by it's cover.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="about-info">
+                    <h3>Bigest <span>Book Store</span> web site</h3>
+                    <p class="about-info-desc">
+                        discover more than 8000 books which concert all subjects and written by different languages discover more than 8000 books which concert all subjects and written by different languages<br>
+
+                        discover more than 8000 books which concert all subjects and written by different languages discover more than 8000 books which concert all subjects and written by different languages discover more than 8000 books which concert all subjects and written by different languages discover more than 8000 books which concert all subjects and written by different languages discover more than 8000 books which concert all subjects and written by different languages discover more than 8000 books which concert all subjects and written by different languages.
+                    </p>
+
+                    <button class="about-info-btn">Learn More</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-img">
+                    <img src="~/images/about/about1.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- /About -->
+<!-- /team -->
+<a id="team"></a>
+<section class="sections speakers">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="section-title">Our Team</h2>
+            <div class="line"><span></span></div>
+            <p>
+                <br>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <div class="serv">
+                    <a href="https://www.facebook.com/abdelkhalek.eddarai/" target="_blank">
+                        <img class="icon" src="~/images/Team/Team3.jpg" style="width:350px;height:350px;">
+                    </a>
+                    <h3 class="serv-title">Eddarai Abdelkhalek</h3>
+                    <p class="serv-desc">Moroccan Programmer and Designer</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="serv">
+                    <a href="https://www.facebook.com/profile.php?id=100041986689951" target="_blank">
+                        <img class="icon" src="~/images/Team/Team11.jpg" style="width:350px;height:350px;">
+                    </a>
+                    <h3 class="serv-title">Sabir Mourad</h3>
+                    <p class="serv-desc">Moroccan Programmer and Designer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /speakers -->
+<!-- /partners -->
+<a id="sponsors"></a>
+<section class="sections partners">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="section-title">Our products</h2>
+            <div class="line"><span></span></div>
+            <p>
+                Our famous books.
+            </p>
+        </div>
+        <div class="row">
+            @if (Request.IsAuthenticated)
+            {
+                <div class="col-md-4">
+                    <div class="partners-img">
+                        <a href="~/ListBooks/Index"><img src="~/images/book1.jpg" style="border-radius:30%;"></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="partners-img">
+                        <a href="~/ListBooks/Index"><img src="~/images/book2.jpg" style="border-radius:30%;"></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="partners-img">
+                        <a href="~/ListBooks/Index"><img src="~/images/book3.jpg" style="border-radius:30%;"></a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-4">
+                    <div class="partners-img">
+                        <a href="~/Account/Login"><img src="~/images/book1.jpg" style="border-radius:30%;"></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="partners-img">
+                        <a href="~/Account/Login"><img src="~/images/book2.jpg" style="border-radius:30%;"></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="partners-img">
+                        <a href="~/Account/Login"><img src="~/images/book3.jpg" style="border-radius:30%;"></a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- /partners -->
+<!-- /contact -->
+<a id="contact"></a>
+<section class="sections contact">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="section-title">Contact And Location</h2>
+            <div class="line"><span></span></div>
+            <p>
+                <br>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="serv">
+                    <form action="https://formspree.io/storebook.storebook@gmail.com"
+                          method="POST">
+                        <input type="text" name="name" placeholder="Entrez votre Nom"><br><br>
+                        <input type="text" name="_replyto" placeholder="Entrez votre adresse mail"><br><br>
+                        <input type="text" name="title" placeholder="Entrez le titre du message"><br><br>
+                        <textarea rows="12" name="message" placeholder="Entrez votre message"></textarea><br>
+                        <br>
+                        <input type="submit" class="btn" value="Envoyer votre message" id="boutton">
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5 col-xs-12">
+                <div class="serv">
+
+                    <iframe src="https://www.google.fr/maps/d/u/0/embed?mid=1-auEvTThxPaEpDxZq-1CbC-4KW_lPnpg" width="640" height="480"></iframe>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <div class="serv">
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/images/contact/smartphone.png"> </td>
+                            <td>06-59227645<br>06-51908595</td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/images/contact/mail.png"> </td>
+                            <td>edd.abdelkhalek@gmail.com<br>sabir.mourad@gmail.com</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /contact -->

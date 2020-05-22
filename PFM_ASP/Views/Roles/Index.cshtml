@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+<style>
+    body {
+        background-image: url('../../images/background.jpg');
+        background-size: cover;
+        background-repeat: repeat-y;
+        min-height: 800px;
+    }
+
+    .dv {
+        margin-top: 160px;
+        background-color: white;
+        margin-bottom: 350px;
+    }
+</style>
+<div class="container dv">
+    <br />
+    <p>
+        <button class="btn btn-default">@Html.ActionLink("Ajouter un Role", "Create")</button>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Modifier", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Détails", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

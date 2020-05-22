@@ -1,0 +1,48 @@
+﻿@model PFM_ASP.Models.Categories
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    body {
+        background-image: url('../../images/background.jpg');
+        background-size: cover;
+        background-repeat: repeat-y;
+        min-height: 800px;
+    }
+
+    .dv {
+        margin-top: 160px;
+        background-color: white;
+        margin-bottom:350px;
+    }
+</style>
+<div class="container dv">
+    <h2>Les détails du catégorie</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryDescription)
+            </dt>
+
+            <dd>
+                @Html.Raw(HttpUtility.HtmlDecode(@Html.DisplayFor(model => model.CategoryDescription).ToString()))
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+        <button class="btn btn-info">@Html.ActionLink("Retour a la liste", "Index")</button>
+    </p>
+</div>

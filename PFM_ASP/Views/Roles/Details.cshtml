@@ -1,0 +1,36 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+<style>
+    body {
+        background-image: url('../../images/background.jpg');
+        background-size: cover;
+        background-repeat: repeat-y;
+        min-height: 800px;
+    }
+
+    .dv {
+        margin-top: 160px;
+        background-color: white;
+        margin-bottom: 350px;
+    }
+</style>
+<div class="container dv">
+    <div>
+        <h2>Les détails du Role</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <button class="btn btn-info">@Html.ActionLink("Modifier", "Edit", new { id = Model.Id })</button>|
+        <button class="btn btn-info">@Html.ActionLink("Retour a la liste", "Index")</button>
+    </p>
+    <br />
+</div>
